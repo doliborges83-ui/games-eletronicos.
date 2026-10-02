@@ -1,1 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>NEXUS GAMES | Games & Eletrônicos</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #080808;
+      color: white;
+    }
+
+    header {
+      background: #101010;
+      border-bottom: 1px solid #252525;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      color: #00ff88;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #00ff88;
+    }
+
+    .cart {
+      background: #00ff88;
+      color: #000;
+      border: 0;
+      padding: 10px 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero {
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      padding: 60px 7%;
+      background:
+        linear-gradient(90deg, #080808 25%, transparent),
+        url("https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=1800&q=80")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 550px;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero span {
+      color: #00ff88;
+    }
+
+    .hero p {
+      color: #bbb;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #00ff88;
+      color: #000;
+      padding: 15px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 60px 7%;
+    }
+
+    .section-title {
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      background: #151515;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #252525;
+      transition: .2s;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      border-color: #00ff88;
+    }
+
+    .category h3 {
+      margin-top: 12px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: #121212;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #242424;
+    }
+
+    .product img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product h3 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #00ff88;
+      font-size: 23px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .buy {
+      width: 100%;
+      padding: 12px;
+      background: #00ff88;
+      border: 0;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #101010;
+      padding: 40px 7%;
+      text-align: center;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .products,
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .products,
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 420px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    NEXUS GAMES
+  </div>
+
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#categorias">Categorias</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <button class="cart" onclick="abrirCarrinho()">
+    🛒 Carrinho (<span id="quantidade">0</span>)
+  </button>
+
+</header>
+
+
+<section class="hero" id="inicio">
+
+  <div class="hero-content">
+
+    <h1>
+      Seu universo de
+      <span>Games</span>
+      começa aqui.
+    </h1>
+
+    <p>
+      Consoles, jogos, periféricos e eletrônicos
+      com ofertas especiais.
+    </p>
+
+    <a href="#produtos" class="button">
+      Ver ofertas
+    </a>
+
+  </div>
+
+</section>
+
+
+<section id="categorias">
+
+  <h2 class="section-title">
+    Categorias
+  </h2>
+
+  <div class="categories">
+
+    <div class="category">
+      🎮
+      <h3>Consoles</h3>
+    </div>
+
+    <div class="category">
+      🕹️
+      <h3>Games</h3>
+    </div>
+
+    <div class="category">
+      🎧
+      <h3>Periféricos</h3>
+    </div>
+
+    <div class="category">
+      📱
+      <h3>Eletrônicos</h3>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="produtos">
+
+  <h2 class="section-title">
+    Ofertas em destaque
+  </h2>
+
+  <div class="products">
+
+
+    <div class="product">
+
+      <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80">
+
+      <div class="product-info">
+
+        <h3>Console Gamer</h3>
+
+        <div class="price">
+          R$ 2.499,90
+        </div>
+
+        <button class="buy"
+          onclick="adicionar('Console Gamer',2499.90)">
+          Comprar
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <img src="https://images.unsplash.com/photo-1592840062661-7e5f8c0d1c2b?auto=format&fit=crop&w=800&q=80">
+
+      <div class="product-info">
+
+        <h3>Headset Gamer</h3>
+
+        <div class="price">
+          R$ 199,90
+        </div>
+
+        <button class="buy"
+          onclick="adicionar('Headset Gamer',199.90)">
+          Comprar
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=800&q=80">
+
+      <div class="product-info">
+
+        <h3>Controle Gamer</h3>
+
+        <div class="price">
+          R$ 299,90
+        </div>
+
+        <button class="buy"
+          onclick="adicionar('Controle Gamer',299.90)">
+          Comprar
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80">
+
+      <div class="product-info">
+
+        <h3>Teclado Mecânico</h3>
+
+        <div class="price">
+          R$ 249,90
+        </div>
+
+        <button class="buy"
+          onclick="adicionar('Teclado Mecânico',249.90)">
+          Comprar
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer id="contato">
+
+  <h3>NEXUS GAMES</h3>
+
+  <p>
+    Games • Eletrônicos • Tecnologia
+  </p>
+
+  <p>
+    © 2026 Nexus Games
+  </p>
+
+</footer>
+
+
+<script>
+
+  let carrinho = [];
+
+  function adicionar(nome, preco) {
+
+    carrinho.push({
+      nome: nome,
+      preco: preco
+    });
+
+    document.getElementById("quantidade").innerText =
+      carrinho.length;
+
+    alert(nome + " adicionado ao carrinho!");
+
+  }
+
+
+  function abrirCarrinho() {
+
+    if (carrinho.length === 0) {
+
+      alert("Seu carrinho está vazio.");
+
+      return;
+
+    }
+
+    let total = 0;
+
+    let produtos = "";
+
+    carrinho.forEach(function(item) {
+
+      produtos +=
+        item.nome +
+        " - R$ " +
+        item.preco.toFixed(2) +
+        "\\n";
+
+      total += item.preco;
+
+    });
+
+    alert(
+      "SEU CARRINHO\\n\\n" +
+      produtos +
+      "\\nTotal: R$ " +
+      total.toFixed(2)
+    );
+
+  }
+
+</script>
+
+</body>
+</html>
